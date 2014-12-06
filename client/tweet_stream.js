@@ -1,9 +1,3 @@
-Template.TweetStream.helpers({
-  tweetedTime: function() {
-    return moment(this.tweetedAt).fromNow();
-  }
-});
-
 Template.TweetStream.events({
   'submit form': function(event, template) {
     event.preventDefault();
