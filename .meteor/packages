@@ -10,4 +10,6 @@ iron:router
 mizzao:bootstrap-3
 stylus
 natestrauser:font-awesome
+joshowens:accounts-entry
+accounts-password
 
