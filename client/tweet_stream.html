@@ -7,15 +7,17 @@
           <div class="media panel-body">
 
             <!-- profile photo -->
+            {{#with user}}
             <a class="pull-left" href="#">
-              <img class="media-object" src="https://pbs.twimg.com/profile_images/484387570214645761/BFPL5V4G_bigger.jpeg" alt="...">
+              <img class="media-object" src="{{profile.imageUrl}}" style="height: 73px;width: 73px;" alt="...">
             </a>
 
             <!-- profile information -->
             <div class="media-body">
-              <span class="username"><strong>amanda saffer</strong></span> <br>
-              <span class="handle">@12pixels</span>
+              <span class="username"><strong>{{profile.name}}</strong></span> <br>
+              <span class="handle">@{{username}}</span>
             </div>
+            {{/with}}
 
             <!-- profile stats -->
             <table id="profile-stats" class="table">
