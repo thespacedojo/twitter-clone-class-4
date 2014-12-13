@@ -2,7 +2,7 @@ Users = Meteor.users
 
 Users.helpers({
   tweets: function() {
-    return Tweets.find({userId: this._id, tweetedAt: {$lt: Session.get('lastSeenTweets')}});
+    return Tweets.find({userId: this._id, tweetedAt: {$lt: Session.get('lastSeenTweets')}}, {sort: {tweetedAt: -1}});
   },
   newTweets: function() {
     return Tweets.find({userId: this._id, tweetedAt: {$gt: Session.get('lastSeenTweets')}});
