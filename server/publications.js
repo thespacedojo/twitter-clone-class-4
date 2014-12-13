@@ -58,3 +58,24 @@ Meteor.publish('profileTweets', function(username) {
   user = Meteor.users.findOne({username: username}, {fields: {emails: 0, services: 0}});
   return Tweets.find({userId: user._id})
 });
+
+
+Meteor.publish('usernames', function(selector, options, colName) {
+  collection = global[colName];
+  sub = this;
+  console.log(selector);
+  console.log(options);
+  handle = collection.find(selector, options).observeChanges({
+    added: function(id, fields) {
+      sub.added('autocompleteRecords', id, fields);
+    },
+    changed: function(id, fields) {
+      sub.changed('autocompleteRecords', id, fields);
+    },
+    removed: function(id) {
+      sub.removed('autocompleteRecords', id)
+    }
+  })
+  sub.ready();
+  sub.onStop(function() { handle.stop() })
+});
